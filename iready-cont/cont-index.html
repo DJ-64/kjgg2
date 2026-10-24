@@ -49,7 +49,23 @@
   gap: 30px;
   justify-content: center;
 }
+.daily-game {
+  text-align: center;
+  margin: 30px auto;
+  padding: 0 20px;
+}
 
+.daily-game h2 {
+  margin-bottom: 15px;
+}
+
+.daily-game .item {
+  display: block;
+  box-sizing: border-box;
+  margin: auto;
+  background: rgba(241, 196, 15, 0.2);
+  border: 2px solid rgba(241, 196, 15, 0.7);
+}
     .item {
   background: rgba(255,255,255,0.1);
   width: 100%;
@@ -85,10 +101,20 @@
     <h1>🎮 Play</h1>
     <h3> Most of these games start with sound on 🔊→🔇</h3>
   </header>
-
+  <div class="daily-game">
+  <a id="dailyGame" class="item" href="#">Loading...</a>
+</div>
+<br>
+<header>
+  </header>
   <div class="menu">
+<<<<<<< Updated upstream
     <a class="item" href="college.html">college ball</a>
     <a class="item" href="retrobowl.html">madden</a>
+=======
+    <a class="item" href="college.html">college retro bowl</a>
+    <a class="item" href="retrobowl.html">retro bowl</a>
+>>>>>>> Stashed changes
     <a class="item" href="sheep.html">Crazy Farm</a>
     <a class="item" href="idev.html">Mine Craf blocks game</a>
     <a class="item" href="crossyroad.htm">Cross road</a>
@@ -118,4 +144,40 @@
     <a class="item" href="fastcar.html">Car Game 2</a>
   </div>
 </body>
+<script>
+  const games = [
+    ["retro bowl", "retrobowl.html"],
+    ["Crazy Farm", "sheep.html"],
+    ["Mine Craf blocks game", "idev.html"],
+    ["Cross road", "crossyroad.htm"],
+    ["KJ Geometry Run", "geodash.html"],
+    ["State", "state.html"],
+    ["Subway Bejing Surfers", "surf.html"],
+    ["Paper 2", "paperio2.htm"],
+    ["Jeep", "hillcar.html"],
+    ["car falling arena", "cararena.html"],
+    ["Drift Boss", "drift-boss.html"],
+    ["Slope", "slope.html"],
+    ["pou", "pou.html"],
+    ["soccer", "supersoccer.html"],
+    ["snow rider", "snow.htm"],
+    ["monkey mart", "monkeymart.htm"],
+    ["snow rolling io", "snow-io.html"]
+  ];
+
+  // Use the current local computer date.
+  const now = new Date();
+  const startOfYear = new Date(now.getFullYear(), 0, 0);
+  const dayOfYear = Math.floor(
+    (now - startOfYear) / 86400000
+  );
+
+  // Deterministic index: same game all day, new index each day.
+  const index = (dayOfYear + now.getFullYear()) % games.length;
+  const [name, url] = games[index];
+
+  const dailyGame = document.getElementById("dailyGame");
+  dailyGame.textContent = "Game Of The Day: " + name;
+  dailyGame.href = url;
+</script>
 </html>
